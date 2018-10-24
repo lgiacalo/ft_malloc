@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 20:12:36 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/24 23:14:52 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 00:47:28 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ t_zone			*ft_mmap_zone(size_t size)
 	t_env	*e;
 
 	zone = (t_zone *)ft_mmap(size + sizeof(t_zone));
+	if (!zone)
+		return (NULL);
 	e = env();
 	ft_init_zone(zone, size);
-//	ft_link_maillon_zone(((int)size == TINY_ZONE)
-//			? &(e->tiny) : &(e->small), zone);
+	ft_zlst_add_end(((int)size == TINY_ZONE)
+			? &(e->tiny) : &(e->small), zone);
 	return (zone);
 }
 
@@ -54,9 +56,11 @@ t_header		*ft_mmap_header(size_t size)
 	t_env		*e;
 
 	header = (t_header *)ft_mmap(size + sizeof(t_header));
+	if (!header)
+		return (NULL);
 	ft_init_header(header, size);
 	e = env();
-//	ft_link_maillon_header(&(e->large), header, NULL);
+	ft_hlst_add_end(&(e->large), header);
 	return (header);
 }
 

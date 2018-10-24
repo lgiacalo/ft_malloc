@@ -6,16 +6,27 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 15:34:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/24 19:11:17 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 00:39:21 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
+int		ft_tri_size_more_header(void *s, size_t size)
+{
+	if (!s || !size)
+		return (ft_error_condition("Probleme : Tri_len_more_header\n"));
+	if ((((t_header *)s)->len + sizeof(t_header)) >= size)
+		return (1);
+	return (0);
+}
+
+/*
+
 int		ft_tri_adr(void *s1, void *s2)
 {
 	if (!s1 || !s2)
-		return (-1);
+		return (ft_error_condition("Probleme : Tri_adr\n"));
 	if (s1 <= s2)
 		return (1);
 	return (0);
@@ -24,19 +35,8 @@ int		ft_tri_adr(void *s1, void *s2)
 int		ft_tri_len(void *s1, void *s2)
 {
 	if (!s1 || !s2)
-		return (-1);
-//	print_header((t_header *)s2, "in tri_len");
-	write(1, "merde\n", 6);
+		return (ft_error_condition("Probleme : tri_len\n"));
 	if (((t_header *)s1)->len <= ((t_header *)s2)->len)
-		return (1);
-	return (0);
-}
-
-int		ft_tri_len_more_header(void *s1, void *s2)
-{
-	if (!s1 || !s2)
-		return (-1);
-	if ((((t_header *)s1)->len + sizeof(t_header)) <= ((t_header *)s2)->len)
 		return (1);
 	return (0);
 }
@@ -44,7 +44,7 @@ int		ft_tri_len_more_header(void *s1, void *s2)
 int		ft_same_adr(void *s1, void *s2)
 {
 	if (!s1 || !s2)
-		return (-1);
+		return (ft_error_condition("Probleme : Same_adr\n"));
 	if (s1 == s2)
 		return (1);
 	return (0);
@@ -53,10 +53,11 @@ int		ft_same_adr(void *s1, void *s2)
 int		ft_maillon_prev_suite(void *s1, void *s2)
 {
 	if (!s1 || !s2)
-		return (-1);
+		return (ft_error_condition("Probleme : maillon_prev_suite\n"));
 	if (s1 == s2)
 		return (0);
 	if (HEADER_MAILLON_NEXT(s2) == HEADER(s1))
 		return (1);
 	return (0);
 }
+*/

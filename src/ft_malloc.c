@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 02:41:06 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/24 23:14:22 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 00:49:25 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** size en octet !!
 */
 
-static t_header	*ft_boucle_zone(t_zone *zone, size_t size)
+static t_header	*ft_malloc_boucle_zone(t_zone *zone, size_t size)
 {
 	t_zone		*place;
 	t_zone		*tmp;
@@ -26,11 +26,12 @@ static t_header	*ft_boucle_zone(t_zone *zone, size_t size)
 	ret = NULL;
 	while (place)
 	{
-//		if ((ret = ft_boucle_header(place, size)) != NULL)
+		if ((ret = ft_malloc_boucle_header(place, size)) != NULL)
 			break ;
 		tmp = place;
 		place = place->next_zone;
 	}
+	print_header(ret, "retour malloc_boucle_zone");
 	return (ret);
 }
 
@@ -45,12 +46,12 @@ static void		*ft_malloc_ts(t_zone **zone, size_t len_zone, size_t size)
 
 	place = NULL;
 	z = NULL;
-	place = ft_boucle_zone(*zone, size);
+	place = ft_malloc_boucle_zone(*zone, size);
 	if (!place)
 	{
 		if (!(z = ft_mmap_zone(len_zone)))
 			return (ft_error_mmap(""));
-//		place = ft_boucle_header(z, size);
+		place = ft_malloc_boucle_header(z, size);
 	}
 	return ((place) ? (place + 1) : NULL);
 }
@@ -71,9 +72,10 @@ void			*ft_malloc(size_t size)
 	e = env();
 	if (size <= 0)
 		return (NULL);
-	else if (size <= SMALL_MAX_ALLOC)
+	size = ft_align_16(size);
+	if (size <= SMALL_MAX_ALLOC)
 		return (ft_malloc_ts(
-			(size <= TINY_MAX_ALLOC) ? &(e->small) : &(e->small), 
+			(size <= TINY_MAX_ALLOC) ? &(e->tiny) : &(e->small), 
 			(size <= TINY_MAX_ALLOC) ? TINY_ZONE : SMALL_ZONE, size));
 	else
 		return (ft_malloc_large(size));

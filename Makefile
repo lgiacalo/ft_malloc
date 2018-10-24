@@ -37,10 +37,12 @@ SRC_PATH	=	src
 INC_PATH	=	include
 OBJ_PATH	=	obj
 
-SRC_NAME	=	ft_malloc.c\
-				env.c\
+SRC_NAME	=	ft_malloc.c ft_malloc_suite.c\
+				env.c ft_condition.c\
 				ft_mmap.c ft_error.c\
-				show_alloc_mem.c\
+				ft_list_header.c\
+				ft_list_zone.c\
+				show_alloc_mem.c ft_print.c\
 				utils.c utils2.c
 
 INC_NAME	=	malloc.h

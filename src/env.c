@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 14:14:58 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/24 23:14:35 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 00:45:01 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,16 @@ t_env			g_e = {NULL, NULL, NULL};
 t_env			*env(void)
 {
 	return (&g_e);
+}
+
+size_t			ft_align_16(size_t size)
+{
+	size_t tmp;
+
+	tmp = size;
+	if (!!(size % 16))
+		tmp = (size / 16) * 16 + 16;
+	return (tmp);
 }
 
 static t_header	*ft_search_header_with_adr(t_header *first, void *ptr, void *max)
@@ -50,7 +60,7 @@ static t_zone	*ft_search_zone_with_adr(t_zone *first, void *ptr)
 }
 
 
-int	ft_verif_adr_ptr(void *ptr)
+int				ft_verif_adr_ptr(void *ptr)
 {
 	t_env	*e;
 
@@ -60,5 +70,4 @@ int	ft_verif_adr_ptr(void *ptr)
 			|| ft_search_header_with_adr(e->large, ptr, NULL))
 		return (1);
 	return (0);
-
 }

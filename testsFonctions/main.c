@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 17:50:00 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/24 23:21:30 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 00:57:13 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,20 @@ int main(void)
 	printf("2e appel => 42\n\n\n");
 	ft_malloc((size_t)42);
 	show_alloc_mem();
-	printf("3e appel => 52\n\n\n");
-	ft_malloc((size_t)52);
+	printf("2e appel => 68\n\n\n");
+	ft_malloc((size_t)68);
 	show_alloc_mem();
-	printf("4e appel => 62\n\n\n");
-	ft_malloc((size_t)62);
+	printf("3e appel => 300\n\n\n");
+	ft_malloc((size_t)300);
 	show_alloc_mem();
-	printf("5e appel => 72\n\n\n");
-	ft_malloc((size_t)72);
+	printf("4e appel => 629\n\n\n");
+	ft_malloc((size_t)629);
 	show_alloc_mem();
-	printf("6e appel => 82\n\n\n");
-	ft_malloc((size_t)82);
+	printf("5e appel => 1050\n\n\n");
+	ft_malloc((size_t)1050);
+	show_alloc_mem();
+	printf("6e appel => 6048\n\n\n");
+	ft_malloc((size_t)6048);
 	show_alloc_mem();
 
 /*

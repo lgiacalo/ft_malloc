@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/24 23:20:53 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 00:48:23 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,59 @@ typedef struct			s_ret
 
 
 void					*ft_malloc(size_t size);
+t_header				*ft_malloc_boucle_header(t_zone *zone, size_t size);
+
+/*
+**	Fonctions map
+*/
 
 void					*ft_mmap(size_t size);
 t_zone					*ft_mmap_zone(size_t size);
 t_header				*ft_mmap_header(size_t size);
 
 t_env					*env(void);
+size_t					ft_align_16(size_t size);
+
+/*
+**	Fonctions list Header
+*/
+
+int						ft_hlst_add_end(t_header **first, t_header *add);
+t_header				*ft_hlst_extract_size(t_header **first, size_t size, int (*condition)(void *s, size_t size));
+
+/*
+** Fonctions list Zone
+*/
+
+int						ft_zlst_add_end(t_zone **first, t_zone *add);
+
+/*
+**	Fonctions Conditions
+*/
+
+int						ft_tri_size_more_header(void *s, size_t size);
+
+/*
+**	Fonctions errors
+*/
 
 void					*ft_error_mmap(char *str);
 void					*ft_error_munmap(char *str);
+void					*ft_error_list(char *str);
+int						ft_error_condition(char *str);
 
 /*
 **	Print
 */
 
 void					show_alloc_mem(void);
+
+void					print_map(t_zone *zone);
+void					print_list_header(t_header *header, char *str);
+void					print_header(t_header *header, char *str);
+void					print_zone(t_zone *zone);
+void					print_env(t_env *env);
+void					print_define_zone(void);
 
 /*
 **	Fonctions utiles
