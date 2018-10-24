@@ -1,0 +1,23 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    README                                             :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/03/08 19:31:38 by ymohl-cl          #+#    #+#              #
+#    Updated: 2015/03/12 14:15:55 by ymohl-cl         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Placez le dossier de rendu dans le meme dossier que main_malloc
+# Definissez dans le fichier main_malloc.c, les valeurs de tiny et medium,
+# comme indique dans votre fichier malloc.h
+# Definissez la variable show_ex a 1 pour tester votre fichier show_mem_ex
+# Commentez les tests que vous ne voulez pas passer.
+# Make
+# Tous les fichiers de tests sont dans le dossier tmp
+# Lancer la commande:http: export DYLD_LIBRARY_PATH='../depot/'
+# Sur Yosmite, entrez le chemin absolu.
+# ./test_malloc
+# Enjoy :D

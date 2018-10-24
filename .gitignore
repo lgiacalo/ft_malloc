@@ -1,0 +1,10 @@
+test
+src/.*.swp
+include/.*.swp
+/obj
+*.so
+/libft/obj
+/libft/*.a
+.*.swp
+log
+.*.swo
