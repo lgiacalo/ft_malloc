@@ -45,7 +45,8 @@ SRC_NAME	=	ft_malloc.c ft_malloc_suite.c\
 				ft_list_header.c\
 				ft_list_zone.c\
 				show_alloc_mem.c ft_print.c\
-				utils.c utils2.c
+				utils.c utils2.c\
+				real_function.c
 
 INC_NAME	=	malloc.h
 OBJ_NAME	=	$(SRC_NAME:.c=.o)

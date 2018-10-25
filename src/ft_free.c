@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 02:39:46 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 04:55:17 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 05:12:14 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_free_ts(t_zone **zone, t_header *sup)
 	t_zone	*tmp_zone;
 	t_header	*tmp_header;
 
-	print_zone(*zone);
 	if (!sup || !zone || !(*zone))
 	{
 		ft_putstr("error ft_free_ts\n");
@@ -68,7 +67,6 @@ void	ft_free(void *ptr)
 		return ;
 	}
 	tmp = ((t_header *)ptr) - 1;
-	print_header(tmp, "maillon ok");
 	e = env();
 	if (tmp->len <= SMALL_MAX_ALLOC)
 		ft_free_ts((tmp->len <= TINY_MAX_ALLOC) ? &(e->tiny) : &(e->small), tmp);

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 05:02:50 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 05:14:49 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ typedef struct			s_env
 	t_header			*large;
 }						t_env;
 
+
+
+void					*malloc(size_t size);
+void					free(void *ptr);
+void					*realloc(void *ptr, size_t size);
 
 void					*ft_malloc(size_t size);
 t_header				*ft_malloc_boucle_header(t_zone *zone, size_t size);

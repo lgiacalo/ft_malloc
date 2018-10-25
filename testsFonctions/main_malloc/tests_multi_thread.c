@@ -6,13 +6,13 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/11 14:59:59 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2015/03/12 17:07:57 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2018/10/25 05:19:13 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_malloc.h"
 
-static void			ft_free(unsigned char **tab)
+static void			ft_free2(unsigned char **tab)
 {
 	int		i;
 
@@ -46,7 +46,7 @@ static void			*function_1(void *medium)
 		value = rand() % med + 1;
 	}
 	sleep(10);
-	ft_free(tab);
+	ft_free2(tab);
 	return (NULL);
 }
 
@@ -72,7 +72,7 @@ static void			*function_2(void *medium)
 		value = rand() % med + 1;
 	}
 	sleep(10);
-	ft_free(tab);
+	ft_free2(tab);
 	return (NULL);
 }
 
