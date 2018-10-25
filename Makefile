@@ -39,6 +39,7 @@ OBJ_PATH	=	obj
 
 SRC_NAME	=	ft_malloc.c ft_malloc_suite.c\
 				ft_free.c\
+				ft_realloc.c\
 				env.c ft_condition.c\
 				ft_mmap.c ft_error.c\
 				ft_list_header.c\

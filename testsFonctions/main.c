@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 17:50:00 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 04:50:34 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 04:57:44 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int main(void)
 //	show_alloc_mem();
 */
 	small = (char **)ft_malloc(sizeof(char *) * 350);
+	ft_realloc(small, 50);
 	i = 0;
 	while (i < 10)
 	{
