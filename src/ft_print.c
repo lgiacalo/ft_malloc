@@ -6,11 +6,13 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 17:39:29 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 00:44:49 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 02:06:30 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
+
+
 
 void	print_map(t_zone *zone)
 {
@@ -91,19 +93,6 @@ void	print_env(t_env *env)
 	printf("Adresse SMALL :\t%p\n", env->small);
 	printf("Adresse LARGE :\t%p\n", env->large);
 	printf("-------------------------------------\n\n");
-}
-
-void	print_ret(t_ret *ret)
-{
-	if (!ret)
-	{
-		printf("Ret n'existe pas !!!\n");
-		return ;
-	}
-	printf("--------- Ret ---------\n");
-	printf("Prev :\t%p\n", ret->prev);
-	printf("New :\t%p\n", ret->new);
-	printf("Suiv :\t%p\n", ret->suiv);
 }
 
 void	print_define_zone(void)

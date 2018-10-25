@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 02:41:06 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 00:49:25 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 02:41:55 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static t_header	*ft_malloc_boucle_zone(t_zone *zone, size_t size)
 		tmp = place;
 		place = place->next_zone;
 	}
-	print_header(ret, "retour malloc_boucle_zone");
 	return (ret);
 }
 
@@ -46,7 +45,8 @@ static void		*ft_malloc_ts(t_zone **zone, size_t len_zone, size_t size)
 
 	place = NULL;
 	z = NULL;
-	place = ft_malloc_boucle_zone(*zone, size);
+	if (*zone && (*zone)->free)
+		place = ft_malloc_boucle_zone(*zone, size);
 	if (!place)
 	{
 		if (!(z = ft_mmap_zone(len_zone)))

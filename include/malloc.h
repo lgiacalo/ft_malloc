@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 00:48:23 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 03:33:05 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ typedef struct			s_ret
 void					*ft_malloc(size_t size);
 t_header				*ft_malloc_boucle_header(t_zone *zone, size_t size);
 
+
+void					ft_free(void *ptr);
+int						ft_verif_adr_ptr(void *ptr);
 /*
 **	Fonctions map
 */
@@ -89,7 +92,10 @@ size_t					ft_align_16(size_t size);
 */
 
 int						ft_hlst_add_end(t_header **first, t_header *add);
+int						ft_hlst_add_malloc(t_header **first, t_header *add);
+int						ft_hlst_add_free(t_header **first, t_header *add);
 t_header				*ft_hlst_extract_size(t_header **first, size_t size, int (*condition)(void *s, size_t size));
+t_header				*ft_hlst_extract_adr(t_header **first, t_header *sup);
 
 /*
 ** Fonctions list Zone
@@ -111,6 +117,7 @@ void					*ft_error_mmap(char *str);
 void					*ft_error_munmap(char *str);
 void					*ft_error_list(char *str);
 int						ft_error_condition(char *str);
+void					*ft_error_adr(char *str);
 
 /*
 **	Print

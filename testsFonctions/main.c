@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 17:50:00 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 00:57:13 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 04:00:30 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,80 @@
 
 int main(void)
 {
+
+	char	**tiny, **small, **large;
+	int		i;
+	int		s;
+/*
+	tiny = (char **)ft_malloc(sizeof(char *) * 350);
+	i = 0;
+//	show_alloc_mem();
+	while (i < 350)
+	{
+		tiny[i] = (char *)ft_malloc(sizeof(char) * (i + 1));
+		i++;
+	}
+//	show_alloc_mem();
+	i = 0;
+	while (i < 350)
+	{
+		s = 0;
+		while (s < i + 1)
+		{
+			tiny[i][s] = 'a';
+			if (s == i)
+				tiny[i][s] = '\0';
+			s++;
+		}
+		i++;
+	}
+//	show_alloc_mem();
+*/
+	small = (char **)ft_malloc(sizeof(char *) * 350);
+	i = 0;
+	while (i < 350)
+	{
+		small[i] = (char *)ft_malloc(sizeof(char) * (i + 200));
+		i++;
+	}
+	i = 0;
+	while (i < 350)
+	{
+		s = 0;
+		while (s < i + 200)
+		{
+			small[i][s] = 'a';
+			if (s == 200 + i - 1)
+				small[i][s] = '\0';
+			s++;
+		}
+		i++;
+	}
+	show_alloc_mem();
+
+	printf("\n\n\n\n SEPARATION \n");
+
+	i = 0;
+	while (i < 350)
+	{
+		if (!(i % 2))
+			ft_free((void *)(small[i]));
+		i++;
+	}
+	i = 0;
+	show_alloc_mem();
+	while (i < 350)
+	{
+		if (!!(i % 2))
+			ft_free((void *)(small[i]));
+		i++;
+	}
+
+
+	show_alloc_mem();
+
+
+/*
 
 	printf("Valeur getpagesize() = %d \n", getpagesize());
 	printf("1er appe => 0l\n\n\n");
@@ -42,7 +116,7 @@ int main(void)
 	printf("6e appel => 6048\n\n\n");
 	ft_malloc((size_t)6048);
 	show_alloc_mem();
-
+*/
 /*
 	show_alloc_mem();
 	printf("\n");

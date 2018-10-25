@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/14 21:40:03 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 00:45:05 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 02:44:56 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ int		ft_error_condition(char *str)
 {
 	ft_putstr(str);
 	return (0);
+}
+
+void	*ft_error_adr(char *str)
+{
+	ft_putstr(str);
+	return (NULL);
 }
 
 /*

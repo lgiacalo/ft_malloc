@@ -25,7 +25,7 @@ NAMELINK	= libft_malloc.so
 CC			= gcc  
 CFLAGS		= #-Wall -Wextra -Werror #-Wpadded
 CPPFLAGS	= -Iinclude
-OPT			= -g
+OPT			= -g -fsanitize=address
 
 COLOR		= \033[31m
 FINCOLOR	= \033[0m
@@ -38,6 +38,7 @@ INC_PATH	=	include
 OBJ_PATH	=	obj
 
 SRC_NAME	=	ft_malloc.c ft_malloc_suite.c\
+				ft_free.c\
 				env.c ft_condition.c\
 				ft_mmap.c ft_error.c\
 				ft_list_header.c\
