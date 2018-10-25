@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/08 13:57:05 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2018/10/25 05:18:17 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 06:05:27 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int		main(void)
 //	tests_complet_map_tiny(tiny);
 //	tests_complet_map_medium(medium, tiny);
 //	tests_complet_map_large(medium);
-	tests_multiple_map(tiny);
+//	tests_multiple_map(tiny);
 //	tests_big_tests();
-	tests_all_map(tiny, medium, show_hex);
+//	tests_all_map(tiny, medium, show_hex);
 //	tests_complet_realloc(tiny, medium);
 	tests_getrlimit();
 //	tests_multi_thread(tiny, medium);

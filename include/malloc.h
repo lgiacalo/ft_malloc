@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 05:14:49 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 05:32:22 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ size_t					ft_align_16(size_t size);
 int						ft_hlst_add_end(t_header **first, t_header *add);
 int						ft_hlst_add_malloc(t_header **first, t_header *add);
 int						ft_hlst_add_free(t_header **first, t_header *add);
-t_header				*ft_hlst_extract_size(t_header **first, size_t size, int (*condition)(void *s, size_t size));
+t_header				*ft_hlst_extract_size(t_header **first, size_t size);
 t_header				*ft_hlst_extract_adr(t_header **first, t_header *sup);
 
 /*

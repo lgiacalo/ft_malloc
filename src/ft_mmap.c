@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 20:12:36 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 01:58:12 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 06:07:56 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void		ft_init_zone(t_zone *zone, size_t size)
 	zone->free = (t_header *)(zone + 1);
 	zone->free->len = size - (sizeof(t_header));
 	zone->next_zone = NULL;
+	if (zone->free->len > 500000)
+		printf("size 2 : %zu\n", zone->free->len);
 }
 
 static void		ft_init_header(t_header *header, size_t size)

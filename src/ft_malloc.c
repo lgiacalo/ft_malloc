@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 02:41:06 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 05:13:11 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 06:15:16 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			*ft_malloc(size_t size)
 	t_env	*e;
 
 	e = env();
-	if (size <= 0)
+	if (size <= 0 || size >= UINT64_MAX)
 		return (NULL);
 	size = ft_align_16(size);
 	if (size <= SMALL_MAX_ALLOC)

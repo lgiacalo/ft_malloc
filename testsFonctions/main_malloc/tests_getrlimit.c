@@ -6,7 +6,7 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/11 13:44:54 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2015/03/11 14:28:24 by ymohl-cl         ###   ########.fr       */
+/*   Updated: 2018/10/25 06:14:20 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void			tests_getrlimit(void)
 	unsigned char		*ptr;
 	size_t				value;
 
-	printf("\033[34;01mTESTS_GETRLIMIT\033[00m\n");
+	printf("\033[34;01mTESTS_GETRLIMIT - max size_t = %llu\033[00m\n", UINT64_MAX);
 	value = ULONG_MAX;
-	printf("\033[33;01mGetRLimit ne devrait pas permettre le malloc avec le max d'un size_t:\033[00m\n");
+	printf("\033[33;01mGetRLimit ne devrait pas permettre le malloc avec le max d'un size_t %zu :\033[00m\n", value);
 	ptr = malloc(value);
 	if (!ptr)
 		printf("\033[32;01mGetRLimit refuse, test OK\033[00m\n");
@@ -30,7 +30,7 @@ void			tests_getrlimit(void)
 		free(ptr);
 	}
 	value = value / 4;
-	printf("\033[33;01mMMAP devrait refuser cette allocation (ULONG_MAX / 4):\033[00m\n");
+	printf("\033[33;01mMMAP devrait refuser cette allocation (ULONG_MAX / 4) = %zu :\033[00m\n", value);
 	ptr = malloc(value);
 	if (ptr)
 	{
@@ -40,7 +40,7 @@ void			tests_getrlimit(void)
 	else
 		printf("\033[32;01mMMAP refuse, test OK\033[00m\n");
 	value = 0;
-	printf("\033[33;01mMalloc devrait accepter une allocation de 0, et fournir au minimum 1 de taille:.\033[00m\n");
+	printf("\033[33;01mMalloc devrait accepter une allocation de 0, et fournir au minimum 1 de taille, %zu:.\033[00m\n", value);
 	ptr = malloc(value);
 	if (ptr)
 	{
