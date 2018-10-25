@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 07:08:13 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 22:39:53 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,8 @@ void					show_free_mem(void);
 void					print_map(t_zone *zone);
 void					print_list_header(t_header *header, char *str);
 void					print_header(t_header *header, char *str);
-void					print_zone(t_zone *zone);
-void					print_env(t_env *env);
+void					print_zone(t_zone *zone, char *str);
+void					print_env(void);
 void					print_define_zone(void);
 
 /*

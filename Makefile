@@ -44,7 +44,7 @@ SRC_NAME	=	ft_malloc.c ft_malloc_suite.c\
 				ft_mmap.c ft_error.c\
 				ft_list_header.c\
 				ft_list_zone.c\
-				show_alloc_mem.c ft_print.c\
+				show_alloc_mem.c print_str.c\
 				utils.c utils2.c\
 				real_function.c
 
@@ -117,8 +117,7 @@ norme:
 
 exec: all
 	./execTests.sh
-	./test
-#	./run.sh ./test
+	./run.sh ./test
 
 
 .PHONY : all clean fclean re norme

@@ -17,6 +17,7 @@ void	*ft_realloc(void *ptr, size_t size)
 	t_header	*ret;
 	t_header	*tmp;
 
+	ft_putstr("\nREALLOC\n");
 	if (!ptr)
 		return (ft_malloc(size));
 	if (!ft_verif_adr_ptr(ptr))

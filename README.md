@@ -33,3 +33,4 @@ segfault avec vim ?
 
 env DYLD_LIBRARY_PATH=./ DYLD_INSERT_LIBRARIES="./libft_malloc.so" DYLD_FORCE_FLAT_NAMESPACE=1
 
+debug with gdb : -g3 -ggdb3

@@ -6,11 +6,12 @@
 /*   By: ymohl-cl <ymohl-cl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/08 13:57:05 by ymohl-cl          #+#    #+#             */
-/*   Updated: 2018/10/25 07:00:02 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 20:17:29 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main_malloc.h"
+#include "../../include/malloc.h"
 
 // La defragmentation doit etre argumente en soutenance. Pas de tests specifique
 // Idem pour les variables d'environnements.
@@ -33,15 +34,16 @@ int		main(void)
 	medium = 512;
 	srand(time(NULL));
 //	tests_simples_malloc();
-//	tests_complet_map_tiny(tiny);
+	tests_complet_map_tiny(tiny);
 //	tests_complet_map_medium(medium, tiny);
-	tests_complet_map_large(medium);
-	tests_multiple_map(tiny);
-	tests_big_tests();
-	tests_all_map(tiny, medium, show_hex);
-	tests_complet_realloc(tiny, medium);
-	tests_getrlimit();
+//	tests_complet_map_large(medium);
+//	tests_multiple_map(tiny);
+//	tests_big_tests();
+//	tests_all_map(tiny, medium, show_hex);
+//	tests_complet_realloc(tiny, medium);
+//	tests_getrlimit();
 //	tests_multi_thread(tiny, medium);
 //	tests_corruption_memory(tiny, medium);
+//	show_alloc_mem();
 	return (0);
 }

@@ -126,6 +126,7 @@ t_header	*ft_hlst_extract_size(t_header **first, size_t size)
 	t_header	*tmp;
 	t_header	*ret;
 
+	print_list_header(*first, "list avant extract size with malloc");
 	if (!first || !(*first))
 		return (ft_error_list("Problem ft_hlst_extract_size\n"));
 	tmp = *first;

@@ -28,7 +28,6 @@ void	ft_free_ts(t_zone **zone, t_header *sup)
 	tmp_header = NULL;
 	while (tmp_zone)
 	{
-		ft_putstr("ft_free_ts\n");
 		tmp_header = ft_hlst_extract_adr(&(tmp_zone->taken), sup);
 		if (tmp_header)
 			break ;
@@ -37,8 +36,6 @@ void	ft_free_ts(t_zone **zone, t_header *sup)
 	if (tmp_zone)
 		if (!ft_hlst_add_free(&(tmp_zone->free), tmp_header))
 			ft_putstr("Error add free dans list\n");
-
-	
 }
 
 
@@ -51,8 +48,10 @@ void	ft_free_large(t_header **first, t_header *sup)
 		ft_putstr("error ft_free_large\n");
 		return ;
 	}
-	ft_putstr("ft_free_large\n");
 	tmp_header = ft_hlst_extract_adr(first, sup);
+	if (!tmp_header)
+		ft_putstr("free sup introuvable large");
+	print_header(tmp_header, "ft_large sup");
 }
 
 void	ft_free(void *ptr)
@@ -60,7 +59,7 @@ void	ft_free(void *ptr)
 	t_header	*tmp;
 	t_env		*e;
 
-				
+	ft_putstr("\nFREE\n");
 	if (!ptr)
 		return ;
 	if (!ft_verif_adr_ptr(ptr))
@@ -70,6 +69,8 @@ void	ft_free(void *ptr)
 	}
 	tmp = ((t_header *)ptr) - 1;
 	e = env();
+	print_zone(e->tiny, "tiny");
+	print_zone(e->small, "small");
 	if (tmp->len <= SMALL_MAX_ALLOC)
 		ft_free_ts((tmp->len <= TINY_MAX_ALLOC) ? &(e->tiny) : &(e->small), tmp);
 	else

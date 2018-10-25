@@ -56,7 +56,7 @@ void		tests_complet_map_tiny(int tiny)
 	}
 	free(tab);
 	printf("\033[33;01mshow alloc mem doit montrer qu'il y a aucune allocation en cours:\033[00m\n");
-	show_alloc_mem();
+//	show_alloc_mem();
 	fclose(fd);
 }
 

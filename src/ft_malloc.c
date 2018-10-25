@@ -70,6 +70,7 @@ void			*ft_malloc(size_t size)
 	t_env	*e;
 
 	e = env();
+	ft_putstr("\nMALLOC\n");
 	if (size <= 0 || size >= (UINT64_MAX - 32))
 		return (NULL);
 	size = ft_align_16(size);

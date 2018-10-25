@@ -12,11 +12,22 @@
 
 #include "malloc.h"
 
+static void	print_size(t_header *header, size_t size)
+{
+	ft_putstr("\nDisplay new taken : h->len = ");
+	ft_aputnbr((long long int)(header->len));
+	ft_putstr(" / size = ");
+	ft_aputnbr((long long int)(size));
+	ft_putstr("\n");
+}
+
 int			ft_display_new_taken(t_zone *zone, t_header *header, size_t size)
 {
 	t_header	*new_header;
 	t_header	*new_free;
 
+	print_size(header, size);
+	print_header(header, "display new taken");
 	new_header = header;
 	new_free = (t_header *)((char *)((t_header *)((header + 1))) + size);
 	if ( (long long int)(header->len) - (long long int)size - (long long int)(16) <= 0)
@@ -37,6 +48,7 @@ t_header	*ft_malloc_boucle_header(t_zone *zone, size_t size)
 	if (!zone)
 		return (NULL);
 	tmp = ft_hlst_extract_size(&(zone->free), size);
+	print_header(tmp, "extract size pour malloc ts");
 	if (!tmp)
 		return (NULL);
 	if (!ft_display_new_taken(zone, tmp, size))
