@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 04:55:39 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 05:11:33 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 06:45:44 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	*ft_realloc(void *ptr, size_t size)
 	t_header	*ret;
 	t_header	*tmp;
 
-	ft_putstr("Realloc\n");
 	if (!ptr)
 		return (ft_malloc(size));
 	if (!ft_verif_adr_ptr(ptr))

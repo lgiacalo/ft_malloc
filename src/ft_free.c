@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 02:39:46 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 05:12:14 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 07:07:32 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_free_ts(t_zone **zone, t_header *sup)
 	tmp_header = NULL;
 	while (tmp_zone)
 	{
+		ft_putstr("ft_free_ts\n");
 		tmp_header = ft_hlst_extract_adr(&(tmp_zone->taken), sup);
 		if (tmp_header)
 			break ;
@@ -50,6 +51,7 @@ void	ft_free_large(t_header **first, t_header *sup)
 		ft_putstr("error ft_free_large\n");
 		return ;
 	}
+	ft_putstr("ft_free_large\n");
 	tmp_header = ft_hlst_extract_adr(first, sup);
 }
 
