@@ -18,6 +18,7 @@
 - remettre flags dans Makefile
 
 
+
 TEst with term : 
 -> compiler
 -> exec run sans @
@@ -26,7 +27,7 @@ toujours verifier si les adresses font parties des map
 
 probleme avec tri_len
 alignement 16octets
-
+revoir test getrlimit();
 
 env DYLD_LIBRARY_PATH=./ DYLD_INSERT_LIBRARIES="./libft_malloc.so" DYLD_FORCE_FLAT_NAMESPACE=1
 

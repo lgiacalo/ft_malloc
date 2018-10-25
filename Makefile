@@ -25,7 +25,7 @@ NAMELINK	= libft_malloc.so
 CC			= gcc  
 CFLAGS		= -Wall -Wextra -Werror #-Wpadded
 CPPFLAGS	= -Iinclude
-OPT			= -g
+OPT			= -g 
 
 COLOR		= \033[31m
 FINCOLOR	= \033[0m
