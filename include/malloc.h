@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 03:33:05 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 04:26:10 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void					*ft_error_adr(char *str);
 */
 
 void					show_alloc_mem(void);
+void					show_free_mem(void);
 
 void					print_map(t_zone *zone);
 void					print_list_header(t_header *header, char *str);

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 17:50:00 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 04:00:30 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 04:50:34 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,18 @@ int main(void)
 */
 	small = (char **)ft_malloc(sizeof(char *) * 350);
 	i = 0;
-	while (i < 350)
+	while (i < 10)
 	{
 		small[i] = (char *)ft_malloc(sizeof(char) * (i + 200));
 		i++;
 	}
+	while (i < 20)
+	{
+		small[i] = (char *)ft_malloc(sizeof(char) * (i));
+		i++;
+	}
 	i = 0;
-	while (i < 350)
+	while (i < 10)
 	{
 		s = 0;
 		while (s < i + 200)
@@ -70,10 +75,12 @@ int main(void)
 	}
 	show_alloc_mem();
 
+	printf("\n\nLEs free\n");
+	show_free_mem();
 	printf("\n\n\n\n SEPARATION \n");
 
 	i = 0;
-	while (i < 350)
+	while (i < 20)
 	{
 		if (!(i % 2))
 			ft_free((void *)(small[i]));
@@ -81,8 +88,12 @@ int main(void)
 	}
 	i = 0;
 	show_alloc_mem();
-	while (i < 350)
+	printf("\n\nLEs free\n");
+	show_free_mem();
+	while (i < 20)
 	{
+		if (!!(i % 2) && (i == 9 || i == 8))
+			show_free_mem();
 		if (!!(i % 2))
 			ft_free((void *)(small[i]));
 		i++;
@@ -90,8 +101,47 @@ int main(void)
 
 
 	show_alloc_mem();
+	printf("\n\nLEs free\n");
 
+	show_free_mem();
+	printf("\n\n\n\n SEPARATION SEPARATION2\n");
 
+	large = (char **)ft_malloc(sizeof(char *) * 20);
+	i = 0;
+	while (i < 20)
+	{
+		large[i] = (char *)ft_malloc(sizeof(char *) * (i * 11) + 1360);
+		i++;
+	}
+	show_alloc_mem();
+	printf("\n\nLEs free\n");
+
+	show_free_mem();
+
+	i = 0;
+	while (i < 20)
+	{
+		if (!!(i % 2))
+			ft_free((void *)large[i]);
+		i++;
+	}
+	i = 0;
+
+	show_alloc_mem();
+	printf("\n\nLEs free\n");
+
+	show_free_mem();
+	while (i < 20)
+	{
+		if (!(i % 2))
+			ft_free((void *)large[i]);
+		i++;
+	}
+
+	show_alloc_mem();
+	printf("\n\nLEs free\n");
+
+	show_free_mem();
 /*
 
 	printf("Valeur getpagesize() = %d \n", getpagesize());

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/19 22:10:05 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 02:06:33 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/25 04:43:31 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,44 @@ static int	boucle_zone(t_zone *zone, char *str)
 		zone = ZONE_NEXT(zone);
 	}
 	return (i);
+}
+
+static int	boucle_zone_free(t_zone *zone, char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!zone || !(zone->free))
+		return (0);
+	while (zone)
+	{
+		if (str && zone->free)
+		{
+			ft_putstr(str);
+			ft_putpnbr_base((unsigned long long int)(zone + 1),
+					"0123456789ABCDEF");
+			ft_putstr("\n");
+		}
+		i += boucle_header(zone->free, ZONE_MAILLON_NEXT(zone), NULL);
+		zone = ZONE_NEXT(zone);
+	}
+	return (i);
+}
+
+void 	show_free_mem(void)
+{
+	t_env	*e;
+	int		total;
+
+	e = env();
+	total = 0;
+	if (e->tiny)
+		total += boucle_zone_free(e->tiny, "TINY : 0x");
+	if (e->small)
+		total += boucle_zone_free(e->small, "SMALL : 0x");
+	ft_putstr("Total : ");
+	ft_aputnbr(total);
+	ft_putstr(" octets libres\n");
 }
 
 void		show_alloc_mem(void)
