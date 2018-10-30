@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/30 20:56:56 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 21:27:32 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@
 */
 
 # define PAGESIZE					getpagesize()
-# define TINY_ZONE					(8 * PAGESIZE)
-# define TINY_MAX_ALLOC				128
-# define SMALL_ZONE					(32 * PAGESIZE)
-# define SMALL_MAX_ALLOC			1024
+# define TINY						128
+# define SMALL						1024
 # define TRUE						1
 # define FALSE						0
 
@@ -132,7 +130,6 @@ void					print_list_header(t_header *header, char *str);
 void					print_header(t_header *header, char *str);
 void					print_zone(t_zone *zone);
 void					print_env(t_env *env);
-void					print_define_zone(void);
 
 /*
 **	Fonctions utiles

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 14:14:58 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/30 20:56:37 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 22:01:39 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ size_t			ft_align_16(size_t size)
 	size_t tmp;
 
 	tmp = size;
+	if (size == 0)
+		return (16);
 	if (!!(size % 16))
 		tmp = (size / 16) * 16 + 16;
 	return (tmp);
@@ -49,9 +51,9 @@ static t_header	*ft_search_header_with_adr(t_header *first, void *ptr)
 		return (NULL);
 	while (first)
 	{
-		if ((char *)first + sizeof(t_header) == (char *)ptr)
+		if ((char *)first + ft_align_16(sizeof(t_header)) == (char *)ptr)
 			return (first);
-		first = HEADER_NEXT(first);
+		first = first->next;
 	}
 	return (NULL);
 }
@@ -64,7 +66,7 @@ static t_zone	*ft_search_zone_with_adr(t_zone *first, void *ptr)
 	{
 		if (ft_search_header_with_adr(first->taken, ptr))
 			return (first);
-		first = ZONE_NEXT(first);
+		first = first->next_zone;
 	}
 	return (NULL);
 }

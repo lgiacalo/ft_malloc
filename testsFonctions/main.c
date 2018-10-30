@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/30 17:50:00 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 04:57:44 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 22:06:24 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,20 @@
 
 int main(void)
 {
-
 	char	**tiny, **small, **large;
 	int		i;
 	int		s;
-/*
-	tiny = (char **)ft_malloc(sizeof(char *) * 350);
+
+	tiny = (char **)ft_malloc(sizeof(char *) * 20);
 	i = 0;
-//	show_alloc_mem();
-	while (i < 350)
+	while (i < 20)
 	{
 		tiny[i] = (char *)ft_malloc(sizeof(char) * (i + 1));
 		i++;
 	}
-//	show_alloc_mem();
+	show_alloc_mem();
 	i = 0;
-	while (i < 350)
+	while (i < 20)
 	{
 		s = 0;
 		while (s < i + 1)
@@ -46,8 +44,9 @@ int main(void)
 		}
 		i++;
 	}
-//	show_alloc_mem();
-*/
+	show_alloc_mem();
+
+
 	small = (char **)ft_malloc(sizeof(char *) * 350);
 	ft_realloc(small, 50);
 	i = 0;
@@ -143,6 +142,7 @@ int main(void)
 	printf("\n\nLEs free\n");
 
 	show_free_mem();
+
 /*
 
 	printf("Valeur getpagesize() = %d \n", getpagesize());

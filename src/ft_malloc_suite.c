@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 00:01:39 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/30 20:53:22 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 21:33:05 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int			ft_display_new_taken(t_zone *zone, t_header *header, size_t size)
 	t_header	*new_header;
 	t_header	*new_free;
 
-	if (header->len >= (size + sizeof(t_header)))
+	if (header->len >= (size + ft_align_16(sizeof(t_header))))
 	{
 		new_header = header;
-		new_free = (t_header *)((char *)((t_header *)((header + 1))) + size);
-		new_free->len = (size_t)(header->len) - size - (size_t)(sizeof(t_header));
+		new_free = (t_header *)((char *)header + size + ft_align_16(sizeof(t_header)));
+		new_free->len = header->len - size - ft_align_16(sizeof(t_header));
 		new_free->next = NULL;
 		new_header->len = size;
 		new_header->next = NULL;

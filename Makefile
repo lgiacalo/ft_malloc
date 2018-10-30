@@ -45,8 +45,8 @@ SRC_NAME	=	ft_malloc.c ft_malloc_suite.c\
 				ft_list_header.c\
 				ft_list_zone.c\
 				show_alloc_mem.c ft_print.c\
-				utils.c utils2.c\
-				real_function.c
+				utils.c utils2.c
+#				real_function.c
 
 INC_NAME	=	malloc.h
 OBJ_NAME	=	$(SRC_NAME:.c=.o)
@@ -90,7 +90,7 @@ $(OBJ_PATH):
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(INC)
 	$(SPY)$(CC) $(OPT) $(CFLAGS) $(CPPFLAGS) -c $< -o $@ -fPIC
 
-$(NAME): $(OBJ_PATH) $(OBJ) 
+$(NAME): $(OBJ_PATH) $(OBJ) Makefile
 	$(SPY)$(CC) $(OPT) -shared -o $(NAME) $(CFLAGS) $(CPPFLAGS) $(OBJ)
 	$(SPY)rm -f $(NAMELINK)
 	$(SPY)ln -fs $(NAME) $(NAMELINK)

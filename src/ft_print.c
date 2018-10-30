@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 17:39:29 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 02:06:30 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 21:26:20 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,4 @@ void	print_env(t_env *env)
 	printf("Adresse SMALL :\t%p\n", env->small);
 	printf("Adresse LARGE :\t%p\n", env->large);
 	printf("-------------------------------------\n\n");
-}
-
-void	print_define_zone(void)
-{
-	printf("\n ------- DEFINE -------\n");
-	printf("PAGESIZE :\t\t%d\n", PAGESIZE);
-	printf("TINY_ZONE :\t\t%d\n", TINY_ZONE);
-	printf("TINY_MAX_ALLOC :\t%d\n", TINY_MAX_ALLOC);
-	printf("SMALL_ZONE :\t\t%d\n", SMALL_ZONE);
-	printf("SMAL_MAX_ALLOC :\t%d\n", SMALL_MAX_ALLOC);
 }

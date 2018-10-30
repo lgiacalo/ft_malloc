@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/16 15:34:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 05:28:45 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 21:21:24 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		ft_tri_size_more_header(void *s, size_t size)
 {
 	if (!s || !size)
 		return (ft_error_condition("Probleme : Tri_len_more_header\n"));
-	if ((((t_header *)s)->len + sizeof(t_header)) >= size)
+	if ((((t_header *)s)->len + ft_align_16(sizeof(t_header))) >= size)
 		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 23:25:00 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 06:19:25 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 21:03:11 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,6 @@ t_header	*ft_hlst_extract_size(t_header **first, size_t size)
 			tmp->next = tmp->next->next;
 			return (ret);
 		}
-		if (tmp->next == tmp) // boucle infinie
-			return (NULL);
 		tmp = tmp->next;
 	}
 	return (NULL);
@@ -172,8 +170,6 @@ t_header	*ft_hlst_extract_adr(t_header **first, t_header *sup)
 			tmp->next = sup->next;
 			return (sup);
 		}
-		if (tmp->next == tmp) // peut etre boucle infinie
-			return (NULL);
 		tmp = tmp->next;
 	}
 	return (NULL);
