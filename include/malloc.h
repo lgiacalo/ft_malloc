@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/12 17:40:20 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 22:39:53 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 20:25:27 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_zone					*ft_mmap_zone(size_t size);
 t_header				*ft_mmap_header(size_t size);
 
 t_env					*env(void);
-size_t					ft_align_16(size_t size);
+size_t					ft_align(size_t size, int multiple);
 
 /*
 **	Fonctions list Header

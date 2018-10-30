@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/11 02:41:06 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 07:03:00 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 20:46:20 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void		*ft_malloc_ts(t_zone **zone, size_t len_zone, size_t size)
 			return (ft_error_mmap(""));
 		place = ft_malloc_boucle_header(z, size);
 	}
-	return ((place) ? (place + 1) : NULL);
+	return ((place) ? (place + ft_align(sizeof(t_header), 16)) : NULL);
 }
 
 static void		*ft_malloc_large(size_t size)
@@ -62,7 +62,7 @@ static void		*ft_malloc_large(size_t size)
 
 	if (!(header = ft_mmap_header(size)))
 		return (ft_error_mmap(""));
-	return (header + 1);
+	return (header + ft_align(sizeof(t_header), 16));
 }
 
 void			*ft_malloc(size_t size)
@@ -70,10 +70,7 @@ void			*ft_malloc(size_t size)
 	t_env	*e;
 
 	e = env();
-	ft_putstr("\nMALLOC\n");
-	if (size <= 0 || size >= (UINT64_MAX - 32))
-		return (NULL);
-	size = ft_align_16(size);
+	size = ft_align(size, 16);
 	if (size <= SMALL_MAX_ALLOC)
 		return (ft_malloc_ts(
 			(size <= TINY_MAX_ALLOC) ? &(e->tiny) : &(e->small), 

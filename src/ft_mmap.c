@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/10 20:12:36 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 07:08:11 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 20:45:43 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,16 @@ static void		ft_init_zone(t_zone *zone, size_t size)
 		return ;
 	zone->len_zone = size;
 	zone->taken = NULL;
-	zone->free = (t_header *)(zone + 1);
-	zone->free->len = size - (sizeof(t_header));
+	zone->free = (t_header *)((char *)zone + ft_align(sizeof(t_zone), 16));
+	zone->free->len = size - ft_align(sizeof(t_zone), 16) - ft_align(sizeof(t_header), 16);
 	zone->next_zone = NULL;
-	if (zone->free->len > 500000)
-		printf("size 2 : %zu\n", zone->free->len);
 }
 
 static void		ft_init_header(t_header *header, size_t size)
 {
 	if (!header)
 		return ;
-	header->len = size;
+	header->len = size - ft_align(sizeof(t_header), 16);
 	header->next = NULL;
 }
 
@@ -42,7 +40,8 @@ t_zone			*ft_mmap_zone(size_t size)
 	t_zone	*zone;
 	t_env	*e;
 
-	zone = (t_zone *)ft_mmap(size + sizeof(t_zone));
+	size = ft_align((size + sizeof(t_zone)), getpagesize());
+	zone = (t_zone *)ft_mmap(size);
 	if (!zone)
 		return (NULL);
 	e = env();
@@ -57,7 +56,8 @@ t_header		*ft_mmap_header(size_t size)
 	t_header	*header;
 	t_env		*e;
 
-	header = (t_header *)ft_mmap(size + sizeof(t_header));
+	size = ft_align((size + sizeof(t_header)), getpagesize());
+	header = (t_header *)ft_mmap(size);
 	if (!header)
 		return (NULL);
 	ft_init_header(header, size);

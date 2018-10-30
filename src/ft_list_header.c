@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/24 23:25:00 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 06:19:25 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 20:40:38 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ t_header	*ft_hlst_extract_size(t_header **first, size_t size)
 	t_header	*tmp;
 	t_header	*ret;
 
-	print_list_header(*first, "list avant extract size with malloc");
 	if (!first || !(*first))
 		return (ft_error_list("Problem ft_hlst_extract_size\n"));
 	tmp = *first;
@@ -173,8 +172,6 @@ t_header	*ft_hlst_extract_adr(t_header **first, t_header *sup)
 			tmp->next = sup->next;
 			return (sup);
 		}
-		if (tmp->next == tmp) // peut etre boucle infinie
-			return (NULL);
 		tmp = tmp->next;
 	}
 	return (NULL);
