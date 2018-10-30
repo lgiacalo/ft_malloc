@@ -6,7 +6,7 @@
 /*   By: lgiacalo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/10 14:14:58 by lgiacalo          #+#    #+#             */
-/*   Updated: 2018/10/25 06:10:46 by lgiacalo         ###   ########.fr       */
+/*   Updated: 2018/10/30 20:56:37 by lgiacalo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,28 @@ size_t			ft_align_16(size_t size)
 	return (tmp);
 }
 
-static t_header	*ft_search_header_with_adr(t_header *first, void *ptr, void *max)
+size_t			ft_align_page(size_t size)
+{
+	size_t tmp;
+	size_t page;
+
+	page = getpagesize();
+	tmp = size;
+	if (!!(size % page))
+		tmp = (size / page) * page + page;
+	return (tmp);
+
+
+}
+
+static t_header	*ft_search_header_with_adr(t_header *first, void *ptr)
 {
 	if (!first || !ptr)
 		return (NULL);
 	while (first)
 	{
-		if (first == (ptr - sizeof(t_header)))
+		if ((char *)first + sizeof(t_header) == (char *)ptr)
 			return (first);
-		if ( max && (void *)HEADER_NEXT(first) >= max)
-			return (NULL);
 		first = HEADER_NEXT(first);
 	}
 	return (NULL);
@@ -50,10 +62,8 @@ static t_zone	*ft_search_zone_with_adr(t_zone *first, void *ptr)
 		return (NULL);
 	while (first)
 	{
-		if (((((void *)(first->taken) + sizeof(t_header)) <= ptr)
-			&& ((void *)ptr < (void *)ZONE_MAILLON_NEXT(first))))
-			if (ft_search_header_with_adr(first->taken, ptr, (void *)ZONE_MAILLON_NEXT(first)))
-				return (first);
+		if (ft_search_header_with_adr(first->taken, ptr))
+			return (first);
 		first = ZONE_NEXT(first);
 	}
 	return (NULL);
@@ -67,7 +77,7 @@ int				ft_verif_adr_ptr(void *ptr)
 	e = env();
 	if (ft_search_zone_with_adr(e->tiny, ptr)
 			|| ft_search_zone_with_adr(e->small, ptr)
-			|| ft_search_header_with_adr(e->large, ptr, NULL))
+			|| ft_search_header_with_adr(e->large, ptr))
 		return (1);
 	return (0);
 }
